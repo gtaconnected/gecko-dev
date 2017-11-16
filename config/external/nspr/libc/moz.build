@@ -4,12 +4,24 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+plc4_library_name = "plc4"
+
+if CONFIG['MOZ_DEBUG']:
+    plc4_library_name += "_d"
+
+if CONFIG['CPU_ARCH'] == 'x86_64':
+    plc4_library_name += "_x64"
+else:
+    plc4_library_name += "_x86"
+
 if CONFIG['MOZ_FOLD_LIBS']:
     Library('plc4')
 else:
     SharedLibrary('plc4')
     SOURCES += ['/nsprpub/lib/libc/src/plvrsion.c']
     USE_LIBS += ['nspr4']
+
+SHARED_LIBRARY_NAME = plc4_library_name
 
 # We allow warnings for third-party code that can be updated from upstream.
 # TODO: fix NSPR warnings and remove this

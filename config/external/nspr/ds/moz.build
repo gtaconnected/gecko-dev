@@ -4,12 +4,24 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+plds4_library_name = "plds4"
+
+if CONFIG['MOZ_DEBUG']:
+    plds4_library_name += "_d"
+
+if CONFIG['CPU_ARCH'] == 'x86_64':
+    plds4_library_name += "_x64"
+else:
+    plds4_library_name += "_x86"
+
 if CONFIG['MOZ_FOLD_LIBS']:
     Library('plds4')
 else:
     SharedLibrary('plds4')
     SOURCES += ['/nsprpub/lib/ds/plvrsion.c']
     USE_LIBS += ['nspr4']
+
+SHARED_LIBRARY_NAME = plds4_library_name
 
 # We allow warnings for third-party code that can be updated from upstream.
 # TODO: fix NSPR warnings and remove this

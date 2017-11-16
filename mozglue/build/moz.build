@@ -4,12 +4,24 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+mozglue_library_name = "mozglue"
+
+if CONFIG['MOZ_DEBUG']:
+    mozglue_library_name += "_d"
+
+if CONFIG['CPU_ARCH'] == 'x86_64':
+    mozglue_library_name += "_x64"
+else:
+    mozglue_library_name += "_x86"
+
 # Build mozglue as a shared lib on Windows, OSX and Android.
 # If this is ever changed, update MOZ_SHARED_MOZGLUE in browser/installer/Makefile.in
 if CONFIG['OS_TARGET'] in ('WINNT', 'Darwin', 'Android'):
     SharedLibrary('mozglue')
 else:
     Library('mozglue')
+
+SHARED_LIBRARY_NAME = mozglue_library_name
 
 SDK_LIBRARY = True
 
