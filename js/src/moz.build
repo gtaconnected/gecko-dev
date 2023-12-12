@@ -641,8 +641,6 @@ if CONFIG['MOZ_DEBUG']:
 
 if CONFIG['CPU_ARCH'] == 'x86_64':
     js_library_name += "_x64"
-else:
-    js_library_name += "_x86"
 
 if CONFIG['JS_SHARED_LIBRARY']:
     GeckoSharedLibrary('js', linkage=None)

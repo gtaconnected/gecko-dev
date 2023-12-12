@@ -11,8 +11,6 @@ if CONFIG['MOZ_DEBUG']:
 
 if CONFIG['CPU_ARCH'] == 'x86_64':
     plc4_library_name += "_x64"
-else:
-    plc4_library_name += "_x86"
 
 if CONFIG['MOZ_FOLD_LIBS']:
     Library('plc4')
