@@ -10,7 +10,7 @@
 // Building with USE_STATIC_LIBS = True sets -MT instead of -MD. -MT sets _MT,
 // while -MD sets _MT and _DLL.
 #if defined(_MT) && !defined(_DLL)
-#define MOZ_STATIC_RUNTIME
+//#define MOZ_STATIC_RUNTIME
 #endif
 
 #if defined(MOZ_MEMORY) && !defined(MOZ_STATIC_RUNTIME)

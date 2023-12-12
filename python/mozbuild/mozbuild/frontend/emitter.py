@@ -906,7 +906,7 @@ class TreeMetadataEmitter(LoggingMixin):
                 not context.config.substs.get('GNU_CC')):
             use_static_lib = (context.get('USE_STATIC_LIBS') and
                               not context.config.substs.get('MOZ_ASAN'))
-            rtl_flag = '-MT' if use_static_lib else '-MD'
+            rtl_flag = '-MT' if use_static_lib else '-MT'
             if (context.config.substs.get('MOZ_DEBUG') and
                     not context.config.substs.get('MOZ_NO_DEBUG_RTL')):
                 rtl_flag += 'd'
